@@ -19,7 +19,7 @@ class Upload(Resource):
         file = request.files['file']
         filename = file.filename
         file.save("UPLOAD_FOLDER" + "/" + filename)
-        my_file = open("UPLOAD_FOLDER/" + filename, "r")
+        my_file = open("UPLOAD_FOLDER/" + filename, "r",encoding ="utf8")
         text = my_file.read()
         try:
             obj = FileBase(filename=filename, file_text=text)
