@@ -19,7 +19,7 @@ class Upload(Resource):
         file = request.files['file']
         filename = file.filename
         file.save("UPLOAD_FOLDER" + "/" + filename)
-        my_file = open("UPLOAD_FOLDER/" + filename, "r",encoding ="utf8")
+        my_file = open("UPLOAD_FOLDER/" + filename, "r", encoding="utf8")
         text = my_file.read()
         try:
             obj = FileBase(filename=filename, file_text=text)
@@ -35,7 +35,7 @@ class Delete(Resource):
         id = request.form.get('id')
         try:
             file = repo.session.query(FileBase).get(id)
-            filename=file.filename
+            filename = file.filename
             repo.session.delete(file)
             repo.session.commit()
             os.remove("UPLOAD_FOLDER/" + filename)
@@ -49,8 +49,8 @@ class Update(Resource):
         id = request.form.get('id')
         text = request.form.get('text')
         try:
-            files=repo.session.query(FileBase).get(id)
-            files.file_text=text
+            files = repo.session.query(FileBase).get(id)
+            files.file_text = text
             repo.session.commit()
             return "Updated", 200
         except Exception:

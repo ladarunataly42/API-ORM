@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String,update
-from repository.base_model import Base
+from sqlalchemy import Column, Integer, String
+from models.base_model import Base
 
 
 
